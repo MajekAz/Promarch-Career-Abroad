@@ -1,0 +1,84 @@
+import React from 'react';
+
+const SuccessStories: React.FC = () => {
+  const testimonials = [
+    {
+      name: "Tunde A.",
+      uni: "University of Birmingham",
+      course: "MSc Public Health",
+      quote: "Promarch helped me sort my visa documentation when I was confused. Now I'm working with the NHS!",
+      image: "https://picsum.photos/seed/tunde/200/200"
+    },
+    {
+      name: "Funke B.",
+      uni: "Coventry University",
+      course: "MBA Global Business",
+      quote: "The pre-departure briefing was a lifesaver. Knowing how to open a Monzo account before landing was great.",
+      image: "https://picsum.photos/seed/funke/200/200"
+    },
+    {
+      name: "Emmanuel K.",
+      uni: "University of Hertfordshire",
+      course: "BSc Computer Science",
+      quote: "Honest advice. They told me realistically what I could afford and matched me to a great school with a scholarship.",
+      image: "https://picsum.photos/seed/emmanuel/200/200"
+    },
+    {
+      name: "Chidinma O.",
+      uni: "University of Manchester",
+      course: "MSc Data Science",
+      quote: "My counselor was available 24/7 on WhatsApp. The support was personal and genuine.",
+      image: "https://picsum.photos/seed/chidinma/200/200"
+    },
+    {
+      name: "Yusuf I.",
+      uni: "Sheffield Hallam University",
+      course: "MSc Construction Management",
+      quote: "I had a study gap of 5 years, but Promarch helped me package my experience to get an offer within 2 weeks.",
+      image: "https://picsum.photos/seed/yusuf/200/200"
+    },
+    {
+      name: "Ngozi E.",
+      uni: "University of Sunderland",
+      course: "Nursing Top-up",
+      quote: "From Abuja to Sunderland, the journey was seamless. Thank you Promarch!",
+      image: "https://picsum.photos/seed/ngozi/200/200"
+    }
+  ];
+
+  return (
+    <div className="animate-fade-in">
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Success Stories</h1>
+           <p className="text-xl text-gray-600 max-w-2xl">Join hundreds of Nigerian students who have successfully moved to the UK.</p>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((story, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all">
+                <div className="flex gap-1 mb-4">
+                  {[1,2,3,4,5].map(star => <span key={star} className="text-yellow-400">★</span>)}
+                </div>
+                <p className="text-gray-600 italic mb-6 min-h-[80px]">"{story.quote}"</p>
+                <div className="flex items-center gap-4">
+                  <img src={story.image} alt={story.name} className="w-12 h-12 rounded-full object-cover bg-gray-200" />
+                  <div>
+                    <h5 className="font-bold text-gray-900">{story.name}</h5>
+                    <p className="text-xs text-promarch-green font-medium">{story.course}</p>
+                    <p className="text-xs text-gray-500">{story.uni}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default SuccessStories;

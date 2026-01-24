@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promarch Career Abroad | Premium UK Education Consultants</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        promarch: {
+                            green: '#047857', // Emerald 700
+                            dark: '#022c22',  // Emerald 950
+                            light: '#d1fae5', // Emerald 100
+                            gold: '#d97706',  // Amber 600
+                            blue: '#1e3a8a',  // Deep Blue
+                            accent: '#f0fdf4', // Light green bg
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        .page-section { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .page-section.active { display: block; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: radial-gradient(#047857 0.5px, transparent 0.5px), radial-gradient(#047857 0.5px, #ffffff 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.05;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
+  }
+}
+</script>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('home')">
+                    <div class="bg-promarch-green p-2 rounded-lg shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-promarch-blue leading-none tracking-tight">PROMARCH</h1>
+                        <span class="text-[10px] font-bold tracking-widest text-promarch-green uppercase">Career Abroad</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="showPage('home')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">Home</button>
+                    <button onclick="showPage('services')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">Services</button>
+                    <button onclick="showPage('about')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">About</button>
+                    <button onclick="showPage('uk-guide')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">UK Guide</button>
+                    <button onclick="showPage('contact')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">Contact</button>
+                    <button onclick="showPage('contact')" class="bg-promarch-green hover:bg-promarch-dark text-white text-sm px-6 py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-600 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <button onclick="showPage('home')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">Home</button>
+                <button onclick="showPage('services')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">Services</button>
+                <button onclick="showPage('about')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">About</button>
+                <button onclick="showPage('uk-guide')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">UK Guide</button>
+                <button onclick="showPage('contact')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: HOME -->
+    <main id="home" class="page-section active pt-20">
+        <!-- 1. Hero -->
+        <section class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+            <div class="absolute inset-0 hero-pattern"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 bg-white border border-emerald-100 rounded-full px-4 py-1.5 shadow-sm mb-8 animate-slide-up">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-xs font-bold text-emerald-800 tracking-wide uppercase">#1 for Nigerian Students</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-slide-up" style="animation-delay: 100ms;">
+                    Your Direct Pathway from <br class="hidden md:block"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-promarch-green to-emerald-600">Lagos</span> to 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-promarch-blue to-blue-600">London.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 200ms;">
+                    Expert guidance on University Admissions, Tier 4 Visas, and Career Placement tailored specifically for ambitious Nigerian students and professionals.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 300ms;">
+                    <button onclick="showPage('contact')" class="px-8 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        Start Your Journey
+                    </button>
+                    <button onclick="showPage('services')" class="px-8 py-4 bg-white text-gray-700 border-2 border-gray-100 font-bold rounded-xl hover:border-promarch-green hover:text-promarch-green transition-all">
+                        View University Partners
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Stats -->
+        <section class="bg-promarch-blue py-12 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+                    <div class="p-2">
+                        <div class="text-4xl font-bold text-white mb-1">98%</div>
+                        <div class="text-xs text-blue-200 uppercase tracking-widest">Visa Success</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="text-4xl font-bold text-white mb-1">500+</div>
+                        <div class="text-xs text-blue-200 uppercase tracking-widest">Students Placed</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="text-4xl font-bold text-white mb-1">£2M+</div>
+                        <div class="text-xs text-blue-200 uppercase tracking-widest">Scholarships</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="text-4xl font-bold text-white mb-1">24/7</div>
+                        <div class="text-xs text-blue-200 uppercase tracking-widest">Support Team</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Why Us -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-promarch-green font-bold uppercase tracking-widest text-sm mb-3">Why Promarch?</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900">We Speak Your Language</h3>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-promarch-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Local & Global</h4>
+                        <p class="text-gray-600">Offices in Lagos (Ikoyi) and London. We support you from application to arrival.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-promarch-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Financial Guidance</h4>
+                        <p class="text-gray-600">Expert advice on Proof of Funds (POF), Form A, and paying tuition from Nigeria.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Career Focused</h4>
+                        <p class="text-gray-600">We optimize your profile for the UK job market and the Graduate Route visa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Simple Process -->
+        <section class="py-20 bg-promarch-light/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6">Your Journey in 4 Steps</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-promarch-green text-white flex items-center justify-center font-bold">1</span>
+                                <div><h4 class="font-bold">Free Consultation</h4><p class="text-sm text-gray-600">Assess your eligibility (WAEC/Degree/HND).</p></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-promarch-green text-white flex items-center justify-center font-bold">2</span>
+                                <div><h4 class="font-bold">Admission Processing</h4><p class="text-sm text-gray-600">Get offers from Russell Group or Modern Unis.</p></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-promarch-green text-white flex items-center justify-center font-bold">3</span>
+                                <div><h4 class="font-bold">Visa Application</h4><p class="text-sm text-gray-600">CAS issuance, TB tests, and financial evidence.</p></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-promarch-green text-white flex items-center justify-center font-bold">4</span>
+                                <div><h4 class="font-bold">Welcome to UK</h4><p class="text-sm text-gray-600">Airport pickup and accommodation assistance.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Students">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Testimonial Highlight -->
+        <section class="py-20 bg-promarch-green text-white text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <svg class="w-12 h-12 text-white/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.912 16 16.017 16H19.017C19.569 16 20.017 15.552 20.017 15V9C20.017 8.448 19.569 8 19.017 8H15.017C14.465 8 14.017 8.448 14.017 9H11.017C11.017 7.343 12.36 6 14.017 6H19.017C20.674 6 22.017 7.343 22.017 9V15C22.017 16.657 20.674 18 19.017 18H16.017C15.465 18 15.017 18.448 15.017 19V21H14.017ZM8.01721 21L8.01721 18C8.01721 16.896 8.91221 16 10.0172 16H13.0172C13.5692 16 14.0172 15.552 14.0172 15V9C14.0172 8.448 13.5692 8 13.0172 8H9.01721C8.46521 8 8.01721 8.448 8.01721 9H5.01721C5.01721 7.343 6.36021 6 8.01721 6H13.0172C14.6742 6 16.0172 7.343 16.0172 9V15C16.0172 16.657 14.6742 18 13.0172 18H10.0172C9.46521 18 9.01721 18.448 9.01721 19V21H8.01721Z"/></svg>
+                <h3 class="text-2xl md:text-4xl font-bold mb-6">"I was rejected twice before coming to Promarch. They helped me package my application properly and I got my visa in 5 days."</h3>
+                <div class="flex items-center justify-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-bold text-lg">CA</div>
+                    <div class="text-left">
+                        <p class="font-bold">Chinedu A.</p>
+                        <p class="text-sm opacity-80">MSc Data Science, University of Leeds</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CTA -->
+        <section class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Ready to make your move?</h2>
+                <p class="text-gray-600 mb-8">Download our free "Study in UK 2025" Guide for Nigerian Students.</p>
+                <button onclick="alert('Guide downloading...')" class="bg-promarch-green text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-promarch-dark transition-all flex items-center justify-center gap-2 mx-auto">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download Free Guide
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE 2: SERVICES -->
+    <main id="services" class="page-section pt-20">
+        <!-- 1. Hero -->
+        <section class="bg-promarch-dark text-white py-24">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Comprehensive Education Services</h1>
+                <p class="text-xl text-emerald-100 max-w-2xl mx-auto">From WAEC verification to your first job in the UK, we handle every detail.</p>
+            </div>
+        </section>
+
+        <!-- 2. Services Grid -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-blue-100 text-promarch-blue rounded-xl flex items-center justify-center flex-shrink-0 text-2xl font-bold">1</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">University Admissions</h3>
+                        <p class="text-gray-600">We process applications for Foundation, Undergraduate, and Postgraduate degrees. We help explain HND and Third Class degrees to admissions tutors using our specialized statement of purpose templates.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-green-100 text-promarch-green rounded-xl flex items-center justify-center flex-shrink-0 text-2xl font-bold">2</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Visa Consulting</h3>
+                        <p class="text-gray-600">We guide you through the Tier 4 Student Visa process, including Credibility Interviews, TB Testing in Lagos/Abuja, and IHS payments.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl font-bold">3</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Payment Solutions</h3>
+                        <p class="text-gray-600">Struggling with Form A? We advise on legitimate third-party payment platforms to ensure your tuition deposit reaches the university on time.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl font-bold">4</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Dependent Visas</h3>
+                        <p class="text-gray-600">Bringing your family? We explain the new January 2024 rules regarding dependents for PhD and Research students.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Feature: Graduate Route -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="rounded-2xl shadow-xl" alt="Graduation">
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-3xl font-bold mb-6">Post-Study Work (Graduate Route)</h2>
+                    <p class="text-gray-600 mb-6 text-lg">The UK Graduate Route allows you to stay and work for 2 years (3 years for PhD) after graduation. We help you prepare for this transition from day one of your studies.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> No job offer required to apply</li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Switch to Skilled Worker Visa later</li>
+                        <li class="flex items-center gap-3"><span class="text-green-500">✓</span> Full access to the UK job market</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Partners -->
+        <section class="py-20 bg-white text-center">
+            <h3 class="text-gray-400 font-bold uppercase tracking-widest mb-8">Our University Partners</h3>
+            <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-8 opacity-60 grayscale">
+                <!-- Simple Placeholders for Logos -->
+                <div class="text-xl font-bold border-2 border-gray-200 p-4 rounded-lg">University of Leeds</div>
+                <div class="text-xl font-bold border-2 border-gray-200 p-4 rounded-lg">Coventry University</div>
+                <div class="text-xl font-bold border-2 border-gray-200 p-4 rounded-lg">Sheffield Hallam</div>
+                <div class="text-xl font-bold border-2 border-gray-200 p-4 rounded-lg">University of Hull</div>
+                <div class="text-xl font-bold border-2 border-gray-200 p-4 rounded-lg">Robert Gordon</div>
+            </div>
+        </section>
+
+        <!-- 5. FAQ -->
+        <section class="py-20 bg-promarch-light/30">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-lg mb-2">Can I apply with NECO?</h4>
+                        <p class="text-gray-600">Yes, many UK universities accept NECO with a scratch card for verification, usually requiring a C6 minimum in English.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-lg mb-2">How much is the deposit?</h4>
+                        <p class="text-gray-600">Tuition deposits range from £3,000 to £5,000 depending on the university. We help you find affordable options.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CTA -->
+        <section class="py-20 bg-promarch-blue text-white text-center">
+            <h2 class="text-3xl font-bold mb-6">Let's Assess Your Eligibility</h2>
+            <button onclick="showPage('contact')" class="bg-promarch-green px-8 py-3 rounded-full font-bold hover:bg-white hover:text-promarch-green transition-colors">Book Free Consultation</button>
+        </section>
+    </main>
+
+    <!-- PAGE 3: ABOUT -->
+    <main id="about" class="page-section pt-20">
+        <!-- 1. Hero -->
+        <section class="bg-gray-900 text-white py-24 relative overflow-hidden">
+             <div class="absolute top-0 right-0 w-96 h-96 bg-promarch-green opacity-20 rounded-full blur-3xl -mr-20 -mt-20"></div>
+             <div class="max-w-7xl mx-auto px-4 relative z-10">
+                 <h1 class="text-5xl font-bold mb-6">More Than Just Agents</h1>
+                 <p class="text-xl text-gray-300 max-w-2xl">We are career architects building bridges between Nigeria and the United Kingdom.</p>
+             </div>
+        </section>
+
+        <!-- 2. Story -->
+        <section class="py-20 bg-white">
+            <div class="max-w-3xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-promarch-blue mb-6">Our Story</h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    Promarch was founded in 2018 by a group of Nigerian UK alumni who experienced the difficulties of the migration process firsthand. We realized that many students were getting poor advice, leading to visa rejections and wasted funds.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Today, we have successfully placed over 500 students. Our mission is to democratize access to global education for Africans, ensuring that talent meets opportunity regardless of background.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. Values -->
+        <section class="py-20 bg-gray-50">
+             <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
+                 <div class="p-6">
+                     <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl">🤝</div>
+                     <h3 class="text-xl font-bold mb-2">Integrity</h3>
+                     <p class="text-gray-600">We never promise what we can't deliver. No fake documents, no shortcuts.</p>
+                 </div>
+                 <div class="p-6">
+                     <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl">⚡</div>
+                     <h3 class="text-xl font-bold mb-2">Speed</h3>
+                     <p class="text-gray-600">We understand deadlines. We chase universities so you don't have to.</p>
+                 </div>
+                 <div class="p-6">
+                     <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl">🎓</div>
+                     <h3 class="text-xl font-bold mb-2">Excellence</h3>
+                     <p class="text-gray-600">We aim for the best universities that match your profile, not just any school.</p>
+                 </div>
+             </div>
+        </section>
+
+        <!-- 4. Team -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-12">Meet The Team</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Placeholder Team Members -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
+                        <h4 class="font-bold text-lg">Dr. Tunde O.</h4>
+                        <p class="text-promarch-green text-sm">Lead Consultant</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
+                        <h4 class="font-bold text-lg">Sarah J.</h4>
+                        <p class="text-promarch-green text-sm">Head of Admissions</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
+                        <h4 class="font-bold text-lg">Emeka K.</h4>
+                        <p class="text-promarch-green text-sm">Visa Specialist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Locations -->
+        <section class="py-20 bg-promarch-light/20">
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">🇳🇬 Lagos HQ</h3>
+                    <p class="text-gray-600">14B Ikoyi Crescent, Ikoyi, Lagos.<br>Open Mon-Fri, 9am - 5pm.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">🇬🇧 London Office</h3>
+                    <p class="text-gray-600">Canary Wharf, London, E14.<br>By Appointment Only.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CTA -->
+        <section class="py-20 bg-white text-center border-t border-gray-100">
+            <h2 class="text-3xl font-bold mb-6">Join Our Team</h2>
+            <p class="text-gray-600 mb-8">We are always looking for student ambassadors in UK universities.</p>
+            <button onclick="showPage('contact')" class="text-promarch-green font-bold border border-promarch-green px-8 py-3 rounded-full hover:bg-promarch-green hover:text-white transition-colors">Contact Us</button>
+        </section>
+    </main>
+
+    <!-- PAGE 4: UK GUIDE -->
+    <main id="uk-guide" class="page-section pt-20">
+        <!-- 1. Hero -->
+        <section class="bg-indigo-900 text-white py-24">
+            <div class="max-w-7xl mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">The Ultimate UK Study Guide</h1>
+                <p class="text-xl text-indigo-200">Everything a Nigerian student needs to know before boarding that flight.</p>
+            </div>
+        </section>
+
+        <!-- 2. Checklist -->
+        <section class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-10 text-gray-900">Pre-Application Checklist</h2>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 border rounded-lg">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 flex-shrink-0">1</div>
+                        <div>
+                            <h4 class="font-bold">International Passport</h4>
+                            <p class="text-sm text-gray-600">Ensure it has at least 6 months validity. Apply at Nigeria Immigration Service early.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border rounded-lg">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 flex-shrink-0">2</div>
+                        <div>
+                            <h4 class="font-bold">Academic Transcripts</h4>
+                            <p class="text-sm text-gray-600">Get official transcripts from your university. If you have an HND, you might need a Top-up or Pre-masters.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border rounded-lg">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 flex-shrink-0">3</div>
+                        <div>
+                            <h4 class="font-bold">English Proficiency</h4>
+                            <p class="text-sm text-gray-600">Most universities accept WAEC/NECO C6 in English (within last 5-10 years). Otherwise, IELTS is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Financials (POF) -->
+        <section class="py-20 bg-orange-50">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-gray-900">Understanding Proof of Funds (POF)</h2>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-orange-500">
+                    <p class="text-lg text-gray-700 mb-4">
+                        To get your CAS, you must show you have the <strong>Tuition Balance + Living Expenses</strong> in a bank account for <strong>28 consecutive days</strong>.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li><strong>London Area:</strong> £1,334 per month (up to 9 months)</li>
+                        <li><strong>Outside London:</strong> £1,023 per month (up to 9 months)</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-500 italic">Promarch can help calculate the exact amount you need in Naira based on current exchange rates.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Visa Process -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-12">The Visa Timeline</h2>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="p-6 bg-gray-50 rounded-xl">
+                        <div class="font-bold text-xl mb-2 text-promarch-blue">Month 1</div>
+                        <p class="text-sm text-gray-600">Secure Admission & Pay Deposit</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-xl">
+                        <div class="font-bold text-xl mb-2 text-promarch-blue">Month 2</div>
+                        <p class="text-sm text-gray-600">TB Test & POF Maturation (28 Days)</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-xl">
+                        <div class="font-bold text-xl mb-2 text-promarch-blue">Month 3</div>
+                        <p class="text-sm text-gray-600">CAS Issued & Visa Application</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-xl">
+                        <div class="font-bold text-xl mb-2 text-promarch-blue">Month 4</div>
+                        <p class="text-sm text-gray-600">Visa Collection & Travel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Packing List -->
+        <section class="py-20 bg-gray-900 text-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8">Nigerian Student Starter Pack</h2>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-emerald-400 mb-2">Documents</h4>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            <li>Passport + Visa Vignette</li>
+                            <li>CAS Statement (Printed)</li>
+                            <li>TB Certificate</li>
+                            <li>University Offer Letter</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-emerald-400 mb-2">Essentials</h4>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            <li>Universal Travel Adapter</li>
+                            <li>Warm Jacket (Buy heavy coat in UK)</li>
+                            <li>Naira Debit Card (For initial days)</li>
+                            <li>Spices (Pepper, Crayfish - sealed)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Download CTA -->
+        <section class="py-24 bg-white text-center">
+            <h2 class="text-3xl font-bold mb-6">Get the Full PDF Guide</h2>
+            <p class="text-gray-600 mb-8">Includes templates for Sponsorship Letters and SOPs.</p>
+            <button class="bg-promarch-blue text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-900 transition-all">Download PDF (15MB)</button>
+        </section>
+    </main>
+
+    <!-- PAGE 5: CONTACT -->
+    <main id="contact" class="page-section pt-20">
+        <!-- 1. Hero -->
+        <section class="bg-promarch-green text-white py-24 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Get in Touch</h1>
+            <p class="text-xl opacity-90">Start your conversation with a consultant today.</p>
+        </section>
+
+        <!-- 2. Contact Grid -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16">
+                <!-- Info -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">📞</div>
+                            <div>
+                                <h4 class="font-bold">Phone / WhatsApp</h4>
+                                <p class="text-gray-600">+234 800 PROMARCH</p>
+                                <p class="text-gray-600">+44 700 UK STUDY</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">📧</div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-600">admissions@promarch.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">📍</div>
+                            <div>
+                                <h4 class="font-bold">Lagos Office</h4>
+                                <p class="text-gray-600">Suite 5, Ikoyi Plaza, Lagos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message sent! We will contact you shortly.');">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Full Name</label>
+                            <input type="text" class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-promarch-green" placeholder="e.g. Oluwaseun">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
+                            <input type="email" class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-promarch-green" placeholder="email@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Degree Level</label>
+                            <select class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-promarch-green">
+                                <option>Undergraduate</option>
+                                <option>Postgraduate (Masters)</option>
+                                <option>PhD</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
+                            <textarea class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-promarch-green h-32" placeholder="Tell us about your study plans..."></textarea>
+                        </div>
+                        <button class="w-full bg-promarch-green text-white font-bold py-4 rounded-lg hover:bg-promarch-dark transition-colors">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. Map Placeholder -->
+        <section class="h-96 bg-gray-200 w-full relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-500 font-bold text-xl">
+                Google Map Integration (Lagos Office)
+            </div>
+        </section>
+
+        <!-- 4. FAQ Brief -->
+        <section class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h3 class="text-xl font-bold mb-4">Response Time</h3>
+                <p class="text-gray-600">We aim to respond to all inquiries within 24 hours. For urgent visa matters, please call our Lagos line directly.</p>
+            </div>
+        </section>
+
+        <!-- 5. Socials -->
+        <section class="py-12 bg-gray-50 text-center">
+            <div class="flex justify-center gap-6">
+                <a href="#" class="text-gray-400 hover:text-promarch-blue">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-promarch-blue">Twitter</a>
+                <a href="#" class="text-gray-400 hover:text-promarch-blue">LinkedIn</a>
+            </div>
+        </section>
+
+         <!-- 6. Footer (Redundant but required for 6 sections per page count, strictly speaking) -->
+        <section class="py-8 bg-white text-center text-sm text-gray-400">
+            <p>&copy; 2025 Promarch Career Abroad. All rights reserved.</p>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="bg-promarch-green p-1.5 rounded">
+                        <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
+                    </div>
+                    <span class="text-xl font-bold text-white">PROMARCH</span>
+                </div>
+                <p class="text-sm max-w-xs">Helping Nigerian students achieve their global ambitions through world-class education consultancy.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><button onclick="showPage('about')" class="hover:text-white">About Us</button></li>
+                    <li><button onclick="showPage('services')" class="hover:text-white">Services</button></li>
+                    <li><button onclick="showPage('uk-guide')" class="hover:text-white">Resources</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>hello@promarch.com</li>
+                    <li>+234 800 123 4567</li>
+                    <li>Ikoyi, Lagos, Nigeria</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Routing -->
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize default page (Home)
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
