@@ -44,7 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <Link to="/about" className={isActive("/about")}>About Us</Link>
               <Link to="/services" className={isActive("/services")}>Services</Link>
               <Link to="/success-stories" className={isActive("/success-stories")}>Success Stories</Link>
-              <Link to="/resources" className={isActive("/resources")}>Resources</Link>
+              <Link to="/contact" className={isActive("/contact")}>Contact</Link>
               <button 
                 onClick={onOpenEligibility}
                 className="bg-promarch-green text-white px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
@@ -70,7 +70,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <Link to="/about" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">About Us</Link>
               <Link to="/services" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Services</Link>
               <Link to="/success-stories" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Success Stories</Link>
-              <Link to="/resources" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Resources</Link>
+              <Link to="/contact" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Contact</Link>
               <button 
                 onClick={() => { onOpenEligibility(); closeMenu(); }}
                 className="block w-full text-center mt-4 bg-promarch-green text-white px-3 py-3 rounded-lg font-semibold"
@@ -104,7 +104,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <li><Link to="/about" className="hover:text-white">About Us</Link></li>
               <li><Link to="/services" className="hover:text-white">Our Services</Link></li>
               <li><Link to="/success-stories" className="hover:text-white">Success Stories</Link></li>
-              <li><Link to="/resources" className="hover:text-white">Blog & Resources</Link></li>
+              <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -120,9 +120,9 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
           <div>
             <h4 className="text-white font-bold mb-4">Contact</h4>
             <ul className="space-y-2 text-sm">
-              <li>Lagos Office: Ikoyi, Lagos</li>
-              <li>Abuja Office: Wuse 2, Abuja</li>
-              <li>Email: hello@promarch.com</li>
+              <li>London Office: 167-169 Great Portland Street, 5th Floor, London</li>
+              <li>WhatsApp: +44 7594 459931</li>
+              <li>Email: info@promarcareerabroad.co.uk</li>
             </ul>
           </div>
         </div>

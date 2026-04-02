@@ -4,45 +4,33 @@ const SuccessStories: React.FC = () => {
   const testimonials = [
     {
       name: "Tunde A.",
-      uni: "University of Birmingham",
-      course: "MSc Public Health",
       quote: "Promarch helped me sort my visa documentation when I was confused. Now I'm working with the NHS!",
-      image: "https://picsum.photos/seed/tunde/200/200"
+      image: "https://picsum.photos/seed/african_man_1/200/200"
     },
     {
       name: "Funke B.",
-      uni: "Coventry University",
-      course: "MBA Global Business",
       quote: "The pre-departure briefing was a lifesaver. Knowing how to open a Monzo account before landing was great.",
-      image: "https://picsum.photos/seed/funke/200/200"
+      image: "https://picsum.photos/seed/african_woman_1/200/200"
     },
     {
       name: "Emmanuel K.",
-      uni: "University of Hertfordshire",
-      course: "BSc Computer Science",
       quote: "Honest advice. They told me realistically what I could afford and matched me to a great school with a scholarship.",
-      image: "https://picsum.photos/seed/emmanuel/200/200"
+      image: "https://picsum.photos/seed/african_man_2/200/200"
     },
     {
       name: "Chidinma O.",
-      uni: "University of Manchester",
-      course: "MSc Data Science",
       quote: "My counselor was available 24/7 on WhatsApp. The support was personal and genuine.",
-      image: "https://picsum.photos/seed/chidinma/200/200"
+      image: "https://picsum.photos/seed/african_woman_2/200/200"
     },
     {
       name: "Yusuf I.",
-      uni: "Sheffield Hallam University",
-      course: "MSc Construction Management",
       quote: "I had a study gap of 5 years, but Promarch helped me package my experience to get an offer within 2 weeks.",
-      image: "https://picsum.photos/seed/yusuf/200/200"
+      image: "https://picsum.photos/seed/african_man_3/200/200"
     },
     {
       name: "Ngozi E.",
-      uni: "University of Sunderland",
-      course: "Nursing Top-up",
       quote: "From Abuja to Sunderland, the journey was seamless. Thank you Promarch!",
-      image: "https://picsum.photos/seed/ngozi/200/200"
+      image: "https://picsum.photos/seed/african_woman_3/200/200"
     }
   ];
 
@@ -68,8 +56,6 @@ const SuccessStories: React.FC = () => {
                   <img src={story.image} alt={story.name} className="w-12 h-12 rounded-full object-cover bg-gray-200" />
                   <div>
                     <h5 className="font-bold text-gray-900">{story.name}</h5>
-                    <p className="text-xs text-promarch-green font-medium">{story.course}</p>
-                    <p className="text-xs text-gray-500">{story.uni}</p>
                   </div>
                 </div>
               </div>

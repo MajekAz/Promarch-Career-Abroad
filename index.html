@@ -54,11 +54,36 @@
         html { scroll-behavior: smooth; }
         .page-section { display: none; animation: fadeIn 0.4s ease-in-out; }
         .page-section.active { display: block; }
+        
+        /* Modern Glassmorphism Header */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
         }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #047857;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
         .hero-pattern {
             background-color: #ffffff;
             background-image: radial-gradient(#047857 0.5px, transparent 0.5px), radial-gradient(#047857 0.5px, #ffffff 0.5px);
@@ -76,51 +101,53 @@
 <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
+    "react": "https://esm.sh/react@^19.2.3"
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
+    <div id="root"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav border-b border-gray-100 shadow-sm">
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-24">
                 <!-- Logo -->
-                <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('home')">
-                    <div class="bg-promarch-green p-2 rounded-lg shadow-md">
+                <div class="flex items-center gap-3 cursor-pointer group" onclick="showPage('home')">
+                    <div class="bg-gradient-to-br from-promarch-green to-emerald-600 p-2.5 rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-promarch-blue leading-none tracking-tight">PROMARCH</h1>
-                        <span class="text-[10px] font-bold tracking-widest text-promarch-green uppercase">Career Abroad</span>
+                        <h1 class="text-2xl font-extrabold text-promarch-blue leading-none tracking-tight">PROMARCH</h1>
+                        <span class="text-[10px] font-bold tracking-[0.2em] text-promarch-green uppercase block mt-0.5">Career Abroad</span>
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <button onclick="showPage('home')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">Home</button>
-                    <button onclick="showPage('services')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">Services</button>
-                    <button onclick="showPage('about')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">About</button>
-                    <button onclick="showPage('uk-guide')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">UK Guide</button>
-                    <button onclick="showPage('contact')" class="nav-link text-sm font-semibold text-gray-600 hover:text-promarch-green transition-colors">Contact</button>
-                    <button onclick="showPage('contact')" class="bg-promarch-green hover:bg-promarch-dark text-white text-sm px-6 py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <div class="hidden md:flex items-center space-x-10">
+                    <button onclick="showPage('home')" class="nav-link text-sm font-bold text-gray-700 hover:text-promarch-green">Home</button>
+                    <button onclick="showPage('services')" class="nav-link text-sm font-bold text-gray-700 hover:text-promarch-green">Services</button>
+                    <button onclick="showPage('about')" class="nav-link text-sm font-bold text-gray-700 hover:text-promarch-green">About</button>
+                    <button onclick="showPage('uk-guide')" class="nav-link text-sm font-bold text-gray-700 hover:text-promarch-green">UK Guide</button>
+                    <button onclick="showPage('contact')" class="nav-link text-sm font-bold text-gray-700 hover:text-promarch-green">Contact</button>
+                    <button onclick="showPage('contact')" class="bg-promarch-green hover:bg-promarch-dark text-white text-sm px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-emerald-200/50 hover:-translate-y-0.5 active:scale-95">
                         Apply Now
                     </button>
                 </div>
 
                 <!-- Mobile Menu Icon -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-600 p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-700 hover:bg-gray-100/50 rounded-lg transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
@@ -128,19 +155,20 @@
         </div>
         
         <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-1">
-                <button onclick="showPage('home')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">Home</button>
-                <button onclick="showPage('services')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">Services</button>
-                <button onclick="showPage('about')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">About</button>
-                <button onclick="showPage('uk-guide')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium border-b border-gray-50">UK Guide</button>
-                <button onclick="showPage('contact')" class="block w-full text-left px-3 py-3 text-gray-600 font-medium">Contact</button>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full shadow-2xl">
+            <div class="px-6 pt-4 pb-8 space-y-2">
+                <button onclick="showPage('home')" class="block w-full text-left px-4 py-3 text-gray-700 font-bold hover:bg-gray-50 rounded-xl transition-colors">Home</button>
+                <button onclick="showPage('services')" class="block w-full text-left px-4 py-3 text-gray-700 font-bold hover:bg-gray-50 rounded-xl transition-colors">Services</button>
+                <button onclick="showPage('about')" class="block w-full text-left px-4 py-3 text-gray-700 font-bold hover:bg-gray-50 rounded-xl transition-colors">About</button>
+                <button onclick="showPage('uk-guide')" class="block w-full text-left px-4 py-3 text-gray-700 font-bold hover:bg-gray-50 rounded-xl transition-colors">UK Guide</button>
+                <button onclick="showPage('contact')" class="block w-full text-left px-4 py-3 text-gray-700 font-bold hover:bg-gray-50 rounded-xl transition-colors">Contact</button>
+                <button onclick="showPage('contact')" class="block w-full text-center mt-4 bg-promarch-green text-white px-4 py-3 rounded-xl font-bold shadow-md">Apply Now</button>
             </div>
         </div>
     </nav>
 
     <!-- PAGE 1: HOME -->
-    <main id="home" class="page-section active pt-20">
+    <main id="home" class="page-section active pt-24">
         <!-- 1. Hero -->
         <section class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-blue-50">
             <div class="absolute inset-0 hero-pattern"></div>
@@ -289,7 +317,7 @@
     </main>
 
     <!-- PAGE 2: SERVICES -->
-    <main id="services" class="page-section pt-20">
+    <main id="services" class="page-section pt-24">
         <!-- 1. Hero -->
         <section class="bg-promarch-dark text-white py-24">
             <div class="max-w-7xl mx-auto px-4 text-center">
@@ -374,7 +402,7 @@
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h4 class="font-bold text-lg mb-2">How much is the deposit?</h4>
-                        <p class="text-gray-600">Tuition deposits range from £3,000 to £5,000 depending on the university. We help you find affordable options.</p>
+                        <p class="text-gray-600">Tuition deposits vary depending on the university. We help you find affordable options.</p>
                     </div>
                 </div>
             </div>
@@ -388,7 +416,7 @@
     </main>
 
     <!-- PAGE 3: ABOUT -->
-    <main id="about" class="page-section pt-20">
+    <main id="about" class="page-section pt-24">
         <!-- 1. Hero -->
         <section class="bg-gray-900 text-white py-24 relative overflow-hidden">
              <div class="absolute top-0 right-0 w-96 h-96 bg-promarch-green opacity-20 rounded-full blur-3xl -mr-20 -mt-20"></div>
@@ -480,7 +508,7 @@
     </main>
 
     <!-- PAGE 4: UK GUIDE -->
-    <main id="uk-guide" class="page-section pt-20">
+    <main id="uk-guide" class="page-section pt-24">
         <!-- 1. Hero -->
         <section class="bg-indigo-900 text-white py-24">
             <div class="max-w-7xl mx-auto px-4">
@@ -597,7 +625,7 @@
     </main>
 
     <!-- PAGE 5: CONTACT -->
-    <main id="contact" class="page-section pt-20">
+    <main id="contact" class="page-section pt-24">
       <!-- 1. Hero -->
       <section class="bg-promarch-green text-white py-24 text-center relative overflow-hidden">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">Let's Plan Your Move</h1>
@@ -660,7 +688,7 @@
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-2xl font-bold mb-4 text-gray-900">Need a quicker response?</h2>
             <p class="text-gray-600 mb-8">Skip the email queue. Our advisors are online now.</p>
-            <a href="https://wa.me/" target="_blank" class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1">
+            <a href="https://wa.me/447594459931" target="_blank" class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 Chat with an Advisor on WhatsApp
             </a>
@@ -681,10 +709,10 @@
                 </div>
                 <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all text-center">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🇬🇧</div>
-                    <h3 class="text-xl font-bold mb-2">UK Hub</h3>
-                    <p class="font-bold text-gray-900">London / Manchester</p>
-                    <p class="text-gray-600 mt-2">Canary Wharf Business Center,<br>London, United Kingdom.</p>
-                    <p class="text-sm text-promarch-blue mt-4 font-bold">+44 700 UK STUDY</p>
+                    <h3 class="text-xl font-bold mb-2">London Office</h3>
+                    <p class="font-bold text-gray-900">Visit HQ</p>
+                    <p class="text-gray-600 mt-2">167-169 Great Portland Street, 5th Floor,<br>London, United Kingdom.</p>
+                    <p class="text-sm text-promarch-blue mt-4 font-bold">+44 7594 459931</p>
                 </div>
             </div>
         </div>
@@ -747,31 +775,6 @@
       </section>
     </main>
 
-    <!-- PAGE 6: SUCCESS -->
-    <main id="success" class="page-section pt-20">
-        <section class="min-h-[80vh] flex items-center justify-center bg-white">
-            <div class="max-w-md w-full px-4 text-center">
-                <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
-                    <svg class="w-12 h-12 text-promarch-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                </div>
-                <h1 class="text-3xl font-bold text-gray-900 mb-4">Request Received!</h1>
-                <p class="text-gray-600 mb-8">
-                    Thank you for reaching out. Our admissions team has received your details. We will contact you via WhatsApp within 24 hours to schedule your free consultation.
-                </p>
-                <div class="space-y-4">
-                     <button onclick="showPage('home')" class="w-full bg-promarch-green text-white font-bold py-4 rounded-xl shadow-lg hover:bg-promarch-dark transition-all">
-                        Back to Home
-                    </button>
-                    <button onclick="showPage('uk-guide')" class="w-full bg-white text-gray-700 border border-gray-200 font-bold py-4 rounded-xl hover:bg-gray-50 transition-all">
-                        Read UK Guide Meanwhile
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
     <!-- Global Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
@@ -795,9 +798,9 @@
             <div>
                 <h4 class="text-white font-bold mb-4">Contact</h4>
                 <ul class="space-y-2 text-sm">
-                    <li>hello@promarch.com</li>
-                    <li>+234 800 123 4567</li>
-                    <li>Ikoyi, Lagos, Nigeria</li>
+                    <li>info@promarcareerabroad.co.uk</li>
+                    <li>+44 7594 459931</li>
+                    <li>London, United Kingdom</li>
                 </ul>
             </div>
         </div>
@@ -832,5 +835,6 @@
             showPage('home');
         });
     </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>

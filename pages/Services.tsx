@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { University, FileCheck, Briefcase, Plane, ArrowRight } from 'lucide-react';
 
 const Services: React.FC = () => {
@@ -57,11 +58,11 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Process Section */}
+       {/* Process Section */}
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
            <h2 className="text-promarch-green font-bold tracking-wide uppercase mb-8">How It Works</h2>
-           <div className="grid md:grid-cols-4 gap-8">
+           <div className="grid md:grid-cols-4 gap-8 mb-16">
              {[
                { step: "01", title: "Consultation", desc: "Free initial assessment of your eligibility." },
                { step: "02", title: "Application", desc: "We submit applications to your chosen unis." },
@@ -75,6 +76,8 @@ const Services: React.FC = () => {
                </div>
              ))}
            </div>
+           
+
         </div>
       </section>
     </div>

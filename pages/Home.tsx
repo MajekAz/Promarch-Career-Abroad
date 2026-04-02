@@ -248,17 +248,16 @@ const Home: React.FC = () => {
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            "Promarch didn't just get me an admission, they helped me secure a £3,000 scholarship and sorted my visa issues when I was about to give up."
+            "Promarch didn't just get me an admission, they helped me secure a scholarship and sorted my visa issues when I was about to give up."
           </h2>
           
           <div className="flex flex-col items-center">
             <img 
-              src="https://randomuser.me/api/portraits/women/63.jpg" 
+              src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=150&h=150&q=80" 
               alt="Student" 
-              className="w-16 h-16 rounded-full border-4 border-white mb-3"
+              className="w-16 h-16 rounded-full border-4 border-white mb-3 object-cover"
             />
             <h4 className="text-white font-bold text-lg">Funmi Adebayo</h4>
-            <p className="text-emerald-200">MSc International Business, University of Hertfordshire</p>
           </div>
           
           <div className="mt-12">

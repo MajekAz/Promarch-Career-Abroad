@@ -81,6 +81,22 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact CTA */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Have more questions?</h2>
+          <p className="text-gray-600 text-lg mb-10">Our team is ready to provide you with personalized advice and support for your UK education journey.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="px-10 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all shadow-lg">
+              Contact Us Now
+            </Link>
+            <Link to="/services" className="px-10 py-4 bg-white text-gray-700 font-bold rounded-xl border border-gray-200 hover:border-promarch-green hover:text-promarch-green transition-all text-center">
+              Our Services
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
