@@ -113,7 +113,7 @@ async function startServer() {
       });
     }
   } else {
-    // In production, server.cjs is inside the dist folder
+    // In production, server.cjs is inside the build folder
     const distPath = __dirname;
     console.log(`Serving static files from: ${distPath}`);
     app.use(express.static(distPath));
