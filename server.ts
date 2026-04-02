@@ -16,7 +16,7 @@ async function startServer() {
     port: parseInt(process.env.SMTP_PORT || '465'),
     secure: true, // true for 465, false for other ports
     auth: {
-      user: process.env.SMTP_USER,
+      user: process.env.SMTP_USER || 'info@promarcareerabroad.co.uk',
       pass: process.env.SMTP_PASS,
     },
   });
@@ -27,7 +27,7 @@ async function startServer() {
     const receiverEmail = process.env.RECEIVER_EMAIL || 'info@promarcareerabroad.co.uk';
 
     const mailOptions = {
-      from: process.env.SMTP_USER,
+      from: process.env.SMTP_USER || 'info@promarcareerabroad.co.uk',
       to: receiverEmail,
       replyTo: email,
       subject: `New Contact Form Submission: ${subject}`,
@@ -66,7 +66,7 @@ async function startServer() {
     const receiverEmail = process.env.RECEIVER_EMAIL || 'info@promarcareerabroad.co.uk';
 
     const mailOptions = {
-      from: process.env.SMTP_USER,
+      from: process.env.SMTP_USER || 'info@promarcareerabroad.co.uk',
       to: receiverEmail,
       replyTo: email,
       subject: `New Lead Magnet Request: Free UK Study Guide`,
