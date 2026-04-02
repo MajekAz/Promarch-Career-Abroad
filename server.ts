@@ -113,7 +113,8 @@ async function startServer() {
       });
     }
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    // In production, server.cjs is inside the dist folder
+    const distPath = __dirname;
     console.log(`Serving static files from: ${distPath}`);
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
