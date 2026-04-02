@@ -1,7 +1,6 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 
@@ -10,7 +9,7 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(cors());
-  app.use(bodyParser.json());
+  app.use(express.json());
 
   // Email Transporter
   const transporter = nodemailer.createTransport({
