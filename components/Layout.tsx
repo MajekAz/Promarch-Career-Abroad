@@ -43,6 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <Link to="/" className={isActive("/")}>Home</Link>
               <Link to="/about" className={isActive("/about")}>About Us</Link>
               <Link to="/services" className={isActive("/services")}>Services</Link>
+              <Link to="/poland-work" className={isActive("/poland-work")}>Poland Work</Link>
               <Link to="/success-stories" className={isActive("/success-stories")}>Success Stories</Link>
               <Link to="/contact" className={isActive("/contact")}>Contact</Link>
               <button 
@@ -69,6 +70,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <Link to="/" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Home</Link>
               <Link to="/about" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">About Us</Link>
               <Link to="/services" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Services</Link>
+              <Link to="/poland-work" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Poland Work</Link>
               <Link to="/success-stories" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Success Stories</Link>
               <Link to="/contact" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Contact</Link>
               <button 
@@ -103,6 +105,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
             <ul className="space-y-2 text-sm">
               <li><Link to="/about" className="hover:text-white">About Us</Link></li>
               <li><Link to="/services" className="hover:text-white">Our Services</Link></li>
+              <li><Link to="/poland-work" className="hover:text-white">Poland Work</Link></li>
               <li><Link to="/success-stories" className="hover:text-white">Success Stories</Link></li>
               <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
             </ul>

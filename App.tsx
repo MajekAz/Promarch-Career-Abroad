@@ -11,6 +11,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import SuccessStories from './pages/SuccessStories';
 import Contact from './pages/Contact';
+import PolandWork from './pages/PolandWork';
 
 // ScrollToTop Component
 const ScrollToTop = () => {
@@ -70,6 +71,7 @@ const App = () => {
           <Route path="services" element={<Services />} />
           <Route path="success-stories" element={<SuccessStories />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="poland-work" element={<PolandWork />} />
         </Route>
       </Routes>
 
