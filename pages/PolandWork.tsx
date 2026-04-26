@@ -12,7 +12,11 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const PolandWork: React.FC = () => {
+interface PolandWorkProps {
+  onOpenBooking: () => void;
+}
+
+const PolandWork: React.FC<PolandWorkProps> = ({ onOpenBooking }) => {
   const jobRoles = [
     {
       icon: <Zap className="w-6 h-6 text-promarch-green" />,
@@ -64,12 +68,12 @@ const PolandWork: React.FC = () => {
               We help you secure your Poland working permit and visa. Start your career in Europe with guaranteed job offers and accommodation.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link 
-                to="/contact" 
-                className="bg-promarch-green text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-800 transition-all shadow-lg flex items-center gap-2"
+              <button 
+                onClick={onOpenBooking}
+                className="bg-promarch-green text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-800 transition-all shadow-lg flex items-center gap-2 text-center"
               >
-                Apply Now <ArrowRight className="w-5 h-5" />
-              </Link>
+                Start Your Free Assessment <ArrowRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </div>
@@ -174,12 +178,12 @@ const PolandWork: React.FC = () => {
               Contact our consultants today for a free assessment of your eligibility for a Poland work visa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-              <Link 
-                to="/contact" 
+              <button 
+                onClick={onOpenBooking} 
                 className="bg-promarch-green text-white px-10 py-4 rounded-full font-bold hover:bg-emerald-800 transition-all shadow-lg"
               >
                 Get Started Today
-              </Link>
+              </button>
               <a 
                 href="https://wa.me/447594459931" 
                 target="_blank" 

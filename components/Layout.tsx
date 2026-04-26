@@ -9,9 +9,10 @@ import {
 interface LayoutProps {
   onOpenEligibility: () => void;
   onOpenLeadMagnet: () => void;
+  onOpenBooking: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) => {
+const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet, onOpenBooking }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -43,14 +44,13 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <Link to="/" className={isActive("/")}>Home</Link>
               <Link to="/about" className={isActive("/about")}>About Us</Link>
               <Link to="/services" className={isActive("/services")}>Services</Link>
-              <Link to="/poland-work" className={isActive("/poland-work")}>Poland Work</Link>
               <Link to="/success-stories" className={isActive("/success-stories")}>Success Stories</Link>
               <Link to="/contact" className={isActive("/contact")}>Contact</Link>
               <button 
-                onClick={onOpenEligibility}
+                onClick={onOpenBooking}
                 className="bg-promarch-green text-white px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
-                Check Eligibility
+                Free Assessment
               </button>
             </div>
 
@@ -70,14 +70,13 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <Link to="/" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Home</Link>
               <Link to="/about" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">About Us</Link>
               <Link to="/services" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Services</Link>
-              <Link to="/poland-work" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Poland Work</Link>
               <Link to="/success-stories" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Success Stories</Link>
               <Link to="/contact" onClick={closeMenu} className="block w-full text-left px-3 py-3 text-gray-600 font-medium">Contact</Link>
               <button 
-                onClick={() => { onOpenEligibility(); closeMenu(); }}
+                onClick={() => { onOpenBooking(); closeMenu(); }}
                 className="block w-full text-center mt-4 bg-promarch-green text-white px-3 py-3 rounded-lg font-semibold"
               >
-                Check Eligibility
+                Free Assessment
               </button>
             </div>
           </div>
@@ -86,7 +85,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
 
       {/* Page Content */}
       <main className="flex-grow pt-20">
-        <Outlet context={{ openEligibility: onOpenEligibility, openLeadMagnet: onOpenLeadMagnet }} />
+        <Outlet context={{ openEligibility: onOpenEligibility, openLeadMagnet: onOpenLeadMagnet, openBooking: onOpenBooking }} />
       </main>
 
       {/* Footer */}
@@ -106,6 +105,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet }) 
               <li><Link to="/about" className="hover:text-white">About Us</Link></li>
               <li><Link to="/services" className="hover:text-white">Our Services</Link></li>
               <li><Link to="/poland-work" className="hover:text-white">Poland Work</Link></li>
+              <li><Link to="/eu-work-permits" className="hover:text-white">EU Work Permits</Link></li>
               <li><Link to="/success-stories" className="hover:text-white">Success Stories</Link></li>
               <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
             </ul>

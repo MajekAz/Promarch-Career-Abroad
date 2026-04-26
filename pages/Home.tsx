@@ -18,7 +18,11 @@ interface OutletContextType {
   openLeadMagnet: () => void;
 }
 
-const Home: React.FC = () => {
+interface HomeProps {
+  onOpenBooking: () => void;
+}
+
+const Home: React.FC<HomeProps> = ({ onOpenBooking }) => {
   const context = useOutletContext<OutletContextType>();
   
   const { openEligibility, openLeadMagnet } = context || { 
@@ -58,10 +62,10 @@ const Home: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <button 
-                  onClick={openEligibility}
+                  onClick={onOpenBooking}
                   className="px-8 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Start Your Journey
+                  Start Your Free Assessment
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <button 
@@ -117,30 +121,6 @@ const Home: React.FC = () => {
                   </div>
                </div>
                <div className="absolute inset-0 bg-promarch-green/10 transform rotate-3 rounded-3xl -z-10 scale-95 origin-bottom-right"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: STATS STRIP */}
-      <section className="bg-promarch-blue py-12 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
-            <div className="p-4">
-              <div className="text-4xl font-bold mb-2 text-emerald-400">98%</div>
-              <div className="text-sm opacity-80 uppercase tracking-wider">Visa Success Rate</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl font-bold mb-2 text-emerald-400">500+</div>
-              <div className="text-sm opacity-80 uppercase tracking-wider">Students Placed</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl font-bold mb-2 text-emerald-400">50+</div>
-              <div className="text-sm opacity-80 uppercase tracking-wider">University Partners</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl font-bold mb-2 text-emerald-400">£2M+</div>
-              <div className="text-sm opacity-80 uppercase tracking-wider">Scholarships Secured</div>
             </div>
           </div>
         </div>
@@ -299,7 +279,7 @@ const Home: React.FC = () => {
               </div>
               
               <p className="mt-6 text-xs text-gray-500">
-                Join 5,000+ Nigerian students who trust our newsletter.
+                Join the Nigerian students who trust our newsletter.
               </p>
             </div>
           </div>

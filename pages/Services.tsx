@@ -1,8 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import { University, FileCheck, Briefcase, Plane, ArrowRight } from 'lucide-react';
 
-const Services: React.FC = () => {
+interface OutletContextType {
+  openEligibility: () => void;
+  openLeadMagnet: () => void;
+}
+
+interface ServicesProps {
+  onOpenBooking: () => void;
+}
+
+const Services: React.FC<ServicesProps> = ({ onOpenBooking }) => {
+  const context = useOutletContext<OutletContextType>();
+  
+  const { openEligibility } = context || { 
+    openEligibility: () => console.log('Eligibility context missing')
+  };
+
   const services = [
     {
       icon: <University className="w-8 h-8 text-white" />,
@@ -77,7 +92,22 @@ const Services: React.FC = () => {
              ))}
            </div>
            
+           <button 
+             onClick={onOpenBooking}
+             className="px-8 py-4 bg-promarch-green text-white font-bold rounded-xl hover:bg-emerald-600 transition-all shadow-lg inline-flex items-center gap-2"
+           >
+             Start Your Free Assessment <ArrowRight className="w-5 h-5" />
+           </button>
 
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-8">Expert Guidance for Your Global Career</h2>
+          <Link to="/contact" className="text-promarch-blue font-bold flex items-center justify-center gap-2 hover:gap-3 transition-all">
+            Contact us for specific requirements <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
     </div>

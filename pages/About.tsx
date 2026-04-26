@@ -2,7 +2,11 @@ import React from 'react';
 import { CheckCircle, ArrowRight, Globe2, Users, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const About: React.FC = () => {
+interface AboutProps {
+  onOpenBooking: () => void;
+}
+
+const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
   return (
     <div className="animate-fade-in">
       {/* Header */}
@@ -42,7 +46,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Why UK Section (Moved from Home) */}
+      {/* Why UK Section */}
       <section id="why-uk" className="py-20 bg-promarch-blue text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 transform translate-x-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -74,8 +78,8 @@ const About: React.FC = () => {
             </div>
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
-                <img src="https://picsum.photos/seed/uk_city/400/500" className="rounded-2xl shadow-lg mt-8" alt="UK City" />
-                <img src="https://picsum.photos/seed/uk_library/400/500" className="rounded-2xl shadow-lg" alt="UK Library" />
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" className="rounded-2xl shadow-lg mt-8" alt="UK City" />
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" className="rounded-2xl shadow-lg" alt="UK Library" />
               </div>
             </div>
           </div>
@@ -85,12 +89,15 @@ const About: React.FC = () => {
       {/* Contact CTA */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Have more questions?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Ready to Start Your Journey?</h2>
           <p className="text-gray-600 text-lg mb-10">Our team is ready to provide you with personalized advice and support for your UK education journey.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="px-10 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all shadow-lg">
-              Contact Us Now
-            </Link>
+            <button 
+              onClick={onOpenBooking}
+              className="px-10 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all shadow-lg"
+            >
+              Start Your Free Assessment
+            </button>
             <Link to="/services" className="px-10 py-4 bg-white text-gray-700 font-bold rounded-xl border border-gray-200 hover:border-promarch-green hover:text-promarch-green transition-all text-center">
               Our Services
             </Link>

@@ -10,7 +10,11 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  onOpenBooking: () => void;
+}
+
+const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +53,6 @@ const Contact: React.FC = () => {
           message: ''
         });
         
-        // Reset status after 5 seconds
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -131,20 +134,36 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              {/* Social Media or Additional Info */}
+              {/* Booking CTA */}
+              <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm">
+                <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-promarch-blue" />
+                  Free Assessment
+                </h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  Speak with our counselors for a free orientation and assessment.
+                </p>
+                <button 
+                  onClick={onOpenBooking}
+                  className="w-full bg-promarch-blue text-white font-bold py-3 rounded-lg hover:bg-blue-900 transition-colors shadow-md"
+                >
+                  Book Free Assessment
+                </button>
+              </div>
+
               <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                 <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                   <MessageSquare className="w-5 h-5 text-promarch-blue" />
                   Instant Support
                 </h4>
                 <p className="text-sm text-gray-600 mb-4">
-                  Need a quick answer? Chat with us on WhatsApp for immediate assistance with your UK study inquiries.
+                  Ready to chat? Message us on WhatsApp for quick help.
                 </p>
                 <a 
                   href="https://wa.me/447594459931" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-block w-full text-center bg-promarch-green text-white font-bold py-3 rounded-lg hover:bg-emerald-600 transition-colors"
+                  className="inline-block w-full text-center bg-promarch-green text-white font-bold py-3 rounded-lg hover:bg-emerald-600 transition-colors shadow-md"
                 >
                   Chat on WhatsApp
                 </a>
@@ -253,7 +272,7 @@ const Contact: React.FC = () => {
                   {status === 'error' && (
                     <div className="flex items-center gap-3 p-4 bg-red-50 text-red-800 rounded-xl animate-fade-in">
                       <AlertCircle className="w-6 h-6 flex-shrink-0" />
-                      <p className="text-sm font-medium">Oops! Something went wrong. Please try again later or contact us via WhatsApp.</p>
+                      <p className="text-sm font-medium">Oops! Something went wrong. Please try again later.</p>
                     </div>
                   )}
                 </form>
@@ -263,7 +282,6 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Map or Office Locations Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -272,17 +290,17 @@ const Contact: React.FC = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-              <h4 className="font-bold text-promarch-blue mb-2">London (HQ)</h4>
-              <p className="text-sm text-gray-600">167-169 Great Portland Street, 5th Floor, London, UK</p>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transform hover:-translate-y-1 transition-all">
+              <h4 className="font-bold text-promarch-blue mb-2 text-lg">London (HQ)</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">167-169 Great Portland Street, 5th Floor, London, W1W 5PF, United Kingdom</p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-              <h4 className="font-bold text-promarch-green mb-2">Lagos Office</h4>
-              <p className="text-sm text-gray-600">Ikeja, Lagos State, Nigeria</p>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transform hover:-translate-y-1 transition-all">
+              <h4 className="font-bold text-promarch-green mb-2 text-lg">Lagos Office</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">Ikeja, Lagos State, Nigeria</p>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-              <h4 className="font-bold text-promarch-green mb-2">Abuja Office</h4>
-              <p className="text-sm text-gray-600">Central Business District, Abuja, Nigeria</p>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transform hover:-translate-y-1 transition-all">
+              <h4 className="font-bold text-promarch-green mb-2 text-lg">Abuja Office</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">Central Business District, Abuja, Nigeria</p>
             </div>
           </div>
         </div>

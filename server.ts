@@ -92,6 +92,48 @@ async function startServer() {
     }
   });
 
+  // API Route: Book Assessment
+  app.post('/api/book-assessment', async (req, res) => {
+    const { name, email, phone, date, time, message } = req.body;
+    const receiverEmail = process.env.RECEIVER_EMAIL || 'info@promarcareerabroad.co.uk';
+
+    const mailOptions = {
+      from: process.env.SMTP_USER || 'info@promarcareerabroad.co.uk',
+      to: receiverEmail,
+      replyTo: email,
+      subject: `New Assessment Booking: ${name}`,
+      text: `
+        New Assessment Booking Request:
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Preferred Date: ${date}
+        Preferred Time: ${time}
+        
+        Message:
+        ${message}
+      `,
+      html: `
+        <h3>New Assessment Booking Request</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Preferred Date:</strong> ${date}</p>
+        <p><strong>Preferred Time:</strong> ${time}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+      `,
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ message: 'Booking request sent successfully' });
+    } catch (error) {
+      console.error('Error sending booking email:', error);
+      res.status(500).json({ error: 'Failed to send booking email' });
+    }
+  });
+
   // Vite middleware for development
   const isProduction = process.env.NODE_ENV === 'production';
   console.log(`Running in ${isProduction ? 'production' : 'development'} mode`);

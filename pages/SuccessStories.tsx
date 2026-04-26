@@ -1,36 +1,41 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
-const SuccessStories: React.FC = () => {
+interface SuccessStoriesProps {
+  onOpenBooking: () => void;
+}
+
+const SuccessStories: React.FC<SuccessStoriesProps> = ({ onOpenBooking }) => {
   const testimonials = [
     {
       name: "Tunde A.",
       quote: "Promarch helped me sort my visa documentation when I was confused. Now I'm working with the NHS!",
-      image: "https://picsum.photos/seed/african_man_1/200/200"
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80"
     },
     {
       name: "Funke B.",
-      quote: "The pre-departure briefing was a lifesaver. Knowing how to open a Monzo account before landing was great.",
-      image: "https://picsum.photos/seed/african_woman_1/200/200"
+      quote: "The pre-departure briefing was a lifesaver. Knowing how to open a UK bank account before landing was great.",
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=150&h=150&q=80"
     },
     {
       name: "Emmanuel K.",
       quote: "Honest advice. They told me realistically what I could afford and matched me to a great school with a scholarship.",
-      image: "https://picsum.photos/seed/african_man_2/200/200"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80"
     },
     {
       name: "Chidinma O.",
       quote: "My counselor was available 24/7 on WhatsApp. The support was personal and genuine.",
-      image: "https://picsum.photos/seed/african_woman_2/200/200"
+      image: "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=150&h=150&q=80"
     },
     {
       name: "Yusuf I.",
       quote: "I had a study gap of 5 years, but Promarch helped me package my experience to get an offer within 2 weeks.",
-      image: "https://picsum.photos/seed/african_man_3/200/200"
+      image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&h=150&q=80"
     },
     {
       name: "Ngozi E.",
       quote: "From Abuja to Sunderland, the journey was seamless. Thank you Promarch!",
-      image: "https://picsum.photos/seed/african_woman_3/200/200"
+      image: "https://images.unsplash.com/photo-1567532939604-b6c5b0ad2eba?auto=format&fit=crop&w=150&h=150&q=80"
     }
   ];
 
@@ -61,6 +66,19 @@ const SuccessStories: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-promarch-blue text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Will You Be Our Next Success Story?</h2>
+          <p className="text-blue-100 text-lg mb-10">Start your journey today by booking a free assessment with our experienced counselors.</p>
+          <button 
+            onClick={onOpenBooking}
+            className="px-10 py-5 bg-promarch-green text-white font-bold rounded-xl hover:bg-emerald-600 transition-all shadow-xl flex items-center justify-center gap-2 mx-auto transform hover:-translate-y-1"
+          >
+            Start Your Free Assessment <ArrowRight className="w-5 h-5" />
+          </button>
         </div>
       </section>
     </div>

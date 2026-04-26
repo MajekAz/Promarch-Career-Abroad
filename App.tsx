@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { X, BookOpen } from 'lucide-react';
 import Layout from './components/Layout';
 import EligibilityAssistant from './components/EligibilityAssistant';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import BookingModal from './components/BookingModal';
 
 // Pages
 import Home from './pages/Home';
@@ -12,6 +13,7 @@ import Services from './pages/Services';
 import SuccessStories from './pages/SuccessStories';
 import Contact from './pages/Contact';
 import PolandWork from './pages/PolandWork';
+import EUWorkPermits from './pages/EUWorkPermits';
 
 // ScrollToTop Component
 const ScrollToTop = () => {
@@ -25,11 +27,13 @@ const ScrollToTop = () => {
 const App = () => {
   const [isEligibilityOpen, setIsEligibilityOpen] = useState(false);
   const [isLeadMagnetOpen, setIsLeadMagnetOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const [leadMagnetData, setLeadMagnetData] = useState({ name: '', email: '' });
   const [leadMagnetStatus, setLeadMagnetStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const openEligibility = () => setIsEligibilityOpen(true);
+  const openBooking = () => setIsBookingOpen(true);
   const openLeadMagnet = () => {
     setIsLeadMagnetOpen(true);
     setLeadMagnetStatus('idle');
@@ -65,19 +69,21 @@ const App = () => {
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Layout onOpenEligibility={openEligibility} onOpenLeadMagnet={openLeadMagnet} />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="services" element={<Services />} />
-          <Route path="success-stories" element={<SuccessStories />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="poland-work" element={<PolandWork />} />
+        <Route path="/" element={<Layout onOpenEligibility={openEligibility} onOpenLeadMagnet={openLeadMagnet} onOpenBooking={openBooking} />}>
+          <Route index element={<Home onOpenBooking={openBooking} />} />
+          <Route path="about" element={<About onOpenBooking={openBooking} />} />
+          <Route path="services" element={<Services onOpenBooking={openBooking} />} />
+          <Route path="success-stories" element={<SuccessStories onOpenBooking={openBooking} />} />
+          <Route path="contact" element={<Contact onOpenBooking={openBooking} />} />
+          <Route path="poland-work" element={<PolandWork onOpenBooking={openBooking} />} />
+          <Route path="eu-work-permits" element={<EUWorkPermits onOpenBooking={openBooking} />} />
         </Route>
       </Routes>
 
       {/* Global Components */}
       <FloatingWhatsApp />
       <EligibilityAssistant isOpen={isEligibilityOpen} onClose={() => setIsEligibilityOpen(false)} />
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
 
       {/* Lead Magnet Modal */}
       {isLeadMagnetOpen && (
