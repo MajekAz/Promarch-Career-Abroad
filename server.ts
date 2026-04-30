@@ -2,6 +2,7 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 
 async function startServer() {
   const app = express();
@@ -148,19 +149,38 @@ async function startServer() {
       app.use(vite.middlewares);
     } catch (e) {
       console.warn('Vite not found, falling back to static serving');
-      const distPath = path.join(process.cwd(), 'dist');
-      app.use(express.static(distPath));
+      const buildPath = path.join(process.cwd(), 'build');
+      app.use(express.static(buildPath));
       app.get('*', (req, res) => {
-        res.sendFile(path.join(distPath, 'index.html'));
+        res.sendFile(path.join(buildPath, 'index.html'));
       });
     }
   } else {
-    // In production, server.cjs is inside the build folder
-    const distPath = __dirname;
-    console.log(`Serving static files from: ${distPath}`);
-    app.use(express.static(distPath));
+    // In production, server.cjs is usually inside the build folder
+    // But we should handle cases where it might be run from the root
+    const buildPath = path.resolve(__dirname);
+    console.log(`Serving static files from buildPath: ${buildPath}`);
+    console.log(`Current working directory: ${process.cwd()}`);
+    
+    app.use(express.static(buildPath));
+    
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      // Priority 1: path relative to server.cjs (expected to be in build/ folder)
+      let indexPath = path.join(buildPath, 'index.html');
+      
+      // Fallback: path relative to process.cwd() / build
+      if (!fs.existsSync(indexPath)) {
+        indexPath = path.join(process.cwd(), 'build', 'index.html');
+      }
+
+      console.log(`Request for ${req.url}, serving: ${indexPath}`);
+      
+      res.sendFile(indexPath, (err) => {
+        if (err) {
+          console.error(`Error sending index.html from ${indexPath}:`, err);
+          res.status(500).send(`Server Error: Missing index.html at ${indexPath}. Current __dirname: ${__dirname}, CWD: ${process.cwd()}`);
+        }
+      });
     });
   }
 
