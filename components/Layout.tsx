@@ -50,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet, on
                 onClick={onOpenBooking}
                 className="bg-promarch-green text-white px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
-                Free Assessment
+                Book Consultation
               </button>
             </div>
 
@@ -76,7 +76,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet, on
                 onClick={() => { onOpenBooking(); closeMenu(); }}
                 className="block w-full text-center mt-4 bg-promarch-green text-white px-3 py-3 rounded-lg font-semibold"
               >
-                Free Assessment
+                Book Consultation
               </button>
             </div>
           </div>
@@ -108,6 +108,7 @@ const Layout: React.FC<LayoutProps> = ({ onOpenEligibility, onOpenLeadMagnet, on
               <li><Link to="/eu-work-permits" className="hover:text-white">EU Work Permits</Link></li>
               <li><Link to="/success-stories" className="hover:text-white">Success Stories</Link></li>
               <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
+              <li><Link to="/book-consultation" className="text-emerald-400 font-bold hover:text-white">Book Consultation</Link></li>
             </ul>
           </div>
 
