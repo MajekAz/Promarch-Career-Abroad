@@ -94,9 +94,9 @@ const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={onOpenBooking}
-              className="px-10 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all shadow-lg"
+              className="px-10 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all shadow-lg animate-pulse"
             >
-              Start Your Free Assessment
+              Book Consultation
             </button>
             <Link to="/services" className="px-10 py-4 bg-white text-gray-700 font-bold rounded-xl border border-gray-200 hover:border-promarch-green hover:text-promarch-green transition-all text-center">
               Our Services

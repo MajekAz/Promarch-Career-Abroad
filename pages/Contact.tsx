@@ -138,16 +138,16 @@ const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
               <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm">
                 <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-promarch-blue" />
-                  Free Assessment
+                  Book Consultation
                 </h4>
                 <p className="text-sm text-gray-600 mb-4">
-                  Speak with our counselors for a free orientation and assessment.
+                  Speak with our counselors for a comprehensive orientation and assessment.
                 </p>
                 <button 
                   onClick={onOpenBooking}
                   className="w-full bg-promarch-blue text-white font-bold py-3 rounded-lg hover:bg-blue-900 transition-colors shadow-md"
                 >
-                  Book Free Assessment
+                  Book Consultation
                 </button>
               </div>
 

@@ -65,7 +65,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBooking }) => {
                   onClick={onOpenBooking}
                   className="px-8 py-4 bg-promarch-blue text-white font-bold rounded-xl hover:bg-blue-900 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Start Your Free Assessment
+                  Book Consultation
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <button 

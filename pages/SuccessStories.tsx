@@ -77,7 +77,7 @@ const SuccessStories: React.FC<SuccessStoriesProps> = ({ onOpenBooking }) => {
             onClick={onOpenBooking}
             className="px-10 py-5 bg-promarch-green text-white font-bold rounded-xl hover:bg-emerald-600 transition-all shadow-xl flex items-center justify-center gap-2 mx-auto transform hover:-translate-y-1"
           >
-            Start Your Free Assessment <ArrowRight className="w-5 h-5" />
+            Book Consultation <ArrowRight className="w-5 h-5" />
           </button>
         </div>
       </section>

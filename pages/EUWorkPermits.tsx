@@ -116,7 +116,7 @@ const EUWorkPermits: React.FC<EUWorkPermitsProps> = ({ onOpenBooking }) => {
                 onClick={onOpenBooking} 
                 className="bg-promarch-green text-white px-10 py-5 rounded-full font-black text-lg hover:bg-emerald-800 transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center gap-3"
               >
-                Start Your Free Assessment <ArrowRight className="w-6 h-6" />
+                Book Consultation <ArrowRight className="w-6 h-6" />
               </button>
               <a 
                 href="https://wa.me/447594459931" 
@@ -181,7 +181,7 @@ const EUWorkPermits: React.FC<EUWorkPermitsProps> = ({ onOpenBooking }) => {
               onClick={onOpenBooking} 
               className="bg-promarch-blue text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-900 transition-all shrink-0"
             >
-              Apply for Poland Work Permit
+              Apply Now
             </button>
           </div>
         </div>
@@ -235,7 +235,7 @@ const EUWorkPermits: React.FC<EUWorkPermitsProps> = ({ onOpenBooking }) => {
                   onClick={onOpenBooking} 
                   className="w-full text-center bg-promarch-green text-white py-4 rounded-xl font-black hover:bg-emerald-800 transition-all"
                 >
-                  Request Germany Visa Guide
+                  Get Started
                 </button>
               </div>
             </div>

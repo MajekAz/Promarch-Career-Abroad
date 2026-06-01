@@ -96,7 +96,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenBooking }) => {
              onClick={onOpenBooking}
              className="px-8 py-4 bg-promarch-green text-white font-bold rounded-xl hover:bg-emerald-600 transition-all shadow-lg inline-flex items-center gap-2"
            >
-             Start Your Free Assessment <ArrowRight className="w-5 h-5" />
+             Book Consultation <ArrowRight className="w-5 h-5" />
            </button>
 
         </div>

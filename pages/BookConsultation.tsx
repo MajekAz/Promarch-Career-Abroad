@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, CheckCircle2, Shield, Clock, GraduationCap, ArrowLeft } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Shield, Clock, GraduationCap, ArrowLeft, MailCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const BookConsultation: React.FC = () => {
@@ -22,7 +22,7 @@ const BookConsultation: React.FC = () => {
               <ArrowLeft className="w-4 h-4" /> Back to Home
             </Link>
             
-            <h1 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight leading-tight">
               Book a Consultation with Promarch Career Abroad
             </h1>
             <p className="text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed">
@@ -52,34 +52,50 @@ const BookConsultation: React.FC = () => {
                 </div>
               </div>
 
-              {/* Google Form IFrame container */}
+              {/* Requirement 3: Message above the embedded form */}
+              <div className="bg-blue-50/60 border-b border-blue-100 px-6 py-5">
+                <p className="text-slate-800 font-medium text-sm md:text-base leading-relaxed">
+                  Complete the consultation form below. Once submitted, your details will be securely captured and a Promarch Career Abroad consultant will contact you shortly.
+                </p>
+              </div>
+
+              {/* Requirements 6, 7, 8: Responsive Google Form IFrame container */}
               <div className="w-full bg-white relative p-1 md:p-4">
                 <iframe 
                   id="google-consultation-form"
                   src={embedUrl} 
                   title="Promarch Consultation Questionnaire"
                   width="100%" 
-                  height="1100" 
                   frameBorder="0" 
-                  className="w-full outline-none border-none overflow-y-auto"
-                  style={{ minHeight: '1000px', display: 'block' }}
+                  marginHeight={0}
+                  marginWidth={0}
+                  className="w-full min-w-full outline-none border-none overflow-y-auto h-[1100px] md:h-[900px]"
+                  style={{ display: 'block' }}
                 >
                   Loading…
                 </iframe>
               </div>
 
-              {/* Action Bar with External Link Fallback */}
+              {/* Requirement 4: Message below the form */}
+              <div className="bg-emerald-50/40 border-t border-emerald-100 px-6 py-4 flex items-center gap-3">
+                <MailCheck className="w-5 h-5 text-promarch-green shrink-0" />
+                <p className="text-slate-700 font-medium text-sm leading-relaxed">
+                  After submitting the form, please check your email for confirmation.
+                </p>
+              </div>
+
+              {/* Requirement 5: Fallback button under the form */}
               <div className="bg-slate-50 px-6 py-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
                 <div>
                   <h4 className="text-slate-800 font-bold text-sm">Having trouble viewing the embedded form?</h4>
-                  <p className="text-xs text-slate-500 mt-1">If the form above is cut off or not loading, click the button to open it in a comfortable full screen window.</p>
+                  <p className="text-xs text-slate-500 mt-1">If the form above is cut off or not loading properly, use the link below to load it in a separate browser window.</p>
                 </div>
                 
                 <a 
                   href={formUrl}
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-promarch-blue hover:bg-blue-900 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-promarch-blue hover:bg-blue-900 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 whitespace-nowrap"
                 >
                   Open Form in New Tab
                   <ExternalLink className="w-4 h-4" />
